@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Covoiturage Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+</head>
+
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title has-text-centered">Covoiturage Details</h1>
+            <div class="box">
+                <p><strong>Departure Location:</strong> {{ cov.departure_location }}</p>
+                <p><strong>Destination:</strong> {{ cov.destination }}</p>
+                <p><strong>Date:</strong> {{ cov.date }}</p>
+                <p><strong>Seats Available:</strong> {{ cov.seats_available }}</p>
+            </div>
+            <a href="{{ url_for('main.get_covoiturages') }}" class="button is-primary">Back to All Covoiturages</a>
+        </div>
+    </section>
+</body>
+
+</html>
+{% endblock %}

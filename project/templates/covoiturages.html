@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>All Covoiturages</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+</head>
+
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title has-text-centered">All Covoiturages</h1>
+            
+            {% if covoiturages %}
+            <table class="table is-fullwidth is-striped">
+                <thead>
+                    <tr>
+                        <th>Departure Location</th>
+                        <th>Destination</th>
+                        <th>Date</th>
+                        <th>Seats Available</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cov in covoiturages %}
+                    <tr>
+                        <td>{{ cov.departure_location }}</td>
+                        <td>{{ cov.destination }}</td>
+                        <td>{{ cov.date }}</td>
+                        <td>{{ cov.seats_available }}</td>
+                        <td>
+                            <a href="{{ url_for('main.show_cov_details', cov_id=cov.id) }}" class="button is-info is-small">
+                                Details
+                            </a>
+                            <form action="{{ url_for('main.delete_cov', cov_id=cov.id) }}" method="POST" style="display: inline;">
+                                <button class="button is-danger is-small" type="submit">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p class="has-text-centered">No covoiturages available.</p>
+            {% endif %}
+        </div>
+    </section>
+</body>
+
+</html>
+{% endblock %}
