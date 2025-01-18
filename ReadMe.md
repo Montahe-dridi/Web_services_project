@@ -20,7 +20,7 @@ This is a Flask-based application that allows users to manage **covoiturages**. 
 
 1. Clone the Repository
     ```bash
-    git clone <repository_url>
+    git clone https://github.com/Montahe-dridi/Web_services_project.git
     cd flask_covoiturage_app
     ```
 
